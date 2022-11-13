@@ -8,7 +8,7 @@ const Home = () => {
 	
 	//GET Request using fetch with basic error handling
 	const getData = () => {
-		fetch("https://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/time")
+		fetch("https://cors-everywhere.herokuapp.com/http://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/time")
 		.then(r => r.text())
 		.then((response) => {
 			console.log("GET response:", response);
@@ -29,7 +29,7 @@ const Home = () => {
         body: postInput
     };
     const postData = () => {
-		fetch('https://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/json', requestOptions)
+		fetch('https://cors-everywhere.herokuapp.com/http://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/json', requestOptions)
         .then(async response => {
 			console.log("POST request made with options:", requestOptions);
             const data = await response.json();
