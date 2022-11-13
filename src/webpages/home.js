@@ -5,10 +5,14 @@ const Home = () => {
 	const [getReturn, setGetReturn] = useState("Empty");
 	const [postReturn, setPostReturn] = useState("Empty");
 	const [postInput, setPostInput] = useState('');
-	
+
+	const url = "https://cors-everywhere.herokuapp.com/" + process.env.REACT_APP_API_URL + "/api/";
+	const getUrl = url + "time";
+	const postUrl = url + "json";
+
 	//GET Request using fetch with basic error handling
 	const getData = () => {
-		fetch("https://cors-everywhere.herokuapp.com/http://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/time")
+		fetch(getUrl)
 		.then(r => r.text())
 		.then((response) => {
 			console.log("GET response:", response);
@@ -29,7 +33,7 @@ const Home = () => {
         body: postInput
     };
     const postData = () => {
-		fetch('https://cors-everywhere.herokuapp.com/http://via-deploy-sb.us-east-1.elasticbeanstalk.com/api/json', requestOptions)
+		fetch(postUrl, requestOptions)
         .then(async response => {
 			console.log("POST request made with options:", requestOptions);
             const data = await response.json();
